@@ -25,6 +25,10 @@ then
     exec sudo -u $RUN_AS $0
 fi
 
+# fresh Raspbian may not have pip3 install and we install requirements for the checkpoint deps
+sudo apt-get -y install python3-all-dev python3-pip 
+pip3 install -r requirements.txt
+
 # The google-assistant-library is only available on some platforms.
 if [[ "$(uname -m)" == "armv7l" || "$(uname -m)" == "x86_64" || "$(uname -m)" == "armv6l" ]] ; then
   pip3 install google-assistant-library==0.1.0
