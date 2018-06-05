@@ -27,8 +27,12 @@ sudo scripts/install-services.sh
 ## Configuring the Voice HAT driver
 
 To use the Voice HAT, your kernel needs to be 4.9 or later. This is available
-on Raspbian 2017-07-05 and later. Voice HAT driver is automatically configured
-by aiy_voice_classic service.
+on Raspbian 2017-07-05 and later. You'll also need to configure ALSA:
+                                  
+``` shell
+sudo scripts/configure-driver.sh
+sudo reboot
+```
 
 After your Pi has rebooted with the driver enabled, run:
 
