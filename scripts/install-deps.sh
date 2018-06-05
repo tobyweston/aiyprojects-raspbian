@@ -27,6 +27,7 @@ fi
 
 # fresh Raspbian may not have pip3 install and we install requirements for the checkpoint dependencies
 sudo apt-get -y install python3-all-dev python3-pip virtualenv
+sudo pip3 install --upgrade pip virtualenv
 pip3 install -r requirements.txt
 
 # virtualenv is required to resolve dependencies against src/aiy for checkpoint scripts etc
