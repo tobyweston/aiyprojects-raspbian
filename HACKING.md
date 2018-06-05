@@ -16,6 +16,13 @@ cd
 git clone https://github.com/google/aiyprojects-raspbian.git AIY-projects-python
 ```
 
+Next, check you have Python's dependencies installed (these are supplied on the image but may not be present on a fresh Raspbian install):
+
+``` shell
+sudo apt-get update
+sudo apt-get install python3-all-dev python3-pip 
+```
+
 Then, install the project dependencies and setup the services:
 
 ``` shell
