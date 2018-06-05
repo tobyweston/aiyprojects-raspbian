@@ -25,9 +25,14 @@ then
     exec sudo -u $RUN_AS $0
 fi
 
-# fresh Raspbian may not have pip3 install and we install requirements for the checkpoint deps
-sudo apt-get -y install python3-all-dev python3-pip 
+# fresh Raspbian may not have pip3 install and we install requirements for the checkpoint dependencies
+sudo apt-get -y install python3-all-dev python3-pip virtualenv
 pip3 install -r requirements.txt
+
+# virtualenv is required to resolve dependencies against src/aiy for checkpoint scripts etc
+cd "${scripts_dir}/.."
+virtualenv --system-site-packages -p python3 env
+echo "/home/pi/AIY-projects-python/src" > /home/pi/AIY-projects-python/env/lib/python3.5/site-packages/aiy.pth
 
 # The google-assistant-library is only available on some platforms.
 if [[ "$(uname -m)" == "armv7l" || "$(uname -m)" == "x86_64" || "$(uname -m)" == "armv6l" ]] ; then
